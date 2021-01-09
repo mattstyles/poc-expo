@@ -67,7 +67,7 @@ export const ThemeProvider = ({
 
 export const useTheme = () => {
   const theme = useContext(ThemeContext)
-  return theme
+  return { theme }
 }
 
 /**
@@ -76,7 +76,7 @@ export const useTheme = () => {
  * @TODO this would probably benefit from caching at some point
  */
 export const withTheme = (Component, ...styleFn) => React.forwardRef((props, ref) => {
-  const theme = useTheme()
+  const { theme } = useTheme()
   const style = Object.assign(...styleFn.map(fn => fn(theme, props)))
   return (
     <Component ref={ref} {...props} style={style} />

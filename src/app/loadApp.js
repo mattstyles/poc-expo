@@ -1,17 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
-
-import { LayoutCenter } from '../ui/layout'
-import { Text } from '../ui/text'
-
-const LoadingModal = () => {
-  return (
-    <LayoutCenter>
-      <Text>Loading...</Text>
-    </LayoutCenter>
-  )
-}
+import AppLoading from 'expo-app-loading'
 
 export const LoadApp = ({
   children
@@ -30,7 +20,7 @@ export const LoadApp = ({
   })
 
   if (!isLoaded || isWaiting) {
-    return <LoadingModal />
+    return <AppLoading />
   }
 
   return children
