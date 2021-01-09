@@ -4,9 +4,10 @@ import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { SimpleComponentRouter as Router } from 'simple-component-router'
 import { View, Button } from 'react-native'
 
-import { Text } from '../ui/text'
 import { routes } from '../core/routes'
 import { createRoute, pushRoute, popRoute, getRoute, routeStack } from '../core/navigation'
+import { Text } from '../ui/text'
+import { Page } from '../ui/layout'
 
 const Home = () => {
   const stack = useRecoilValue(routeStack)
@@ -14,11 +15,13 @@ const Home = () => {
   const pop = useSetRecoilState(popRoute)
 
   return (
-    <View style={{ paddingTop: 16 }}>
-      <Text color='green'>I am home.</Text>
-      <Button title='Go out somewhere' onPress={() => setRoute(createRoute(routes.some))} />
-      {stack.length > 1 && <Button title='Go back.' onPress={pop} />}
-    </View>
+    <Page>
+      <View>
+        <Text color='green'>I am home.</Text>
+        <Button title='Go out somewhere' onPress={() => setRoute(createRoute(routes.some))} />
+        {stack.length > 1 && <Button title='Go back.' onPress={pop} />}
+      </View>
+    </Page>
   )
 }
 

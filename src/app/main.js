@@ -6,14 +6,14 @@ import { RecoilRoot } from 'recoil'
 import { LoadApp } from './loadApp'
 import { ThemeProvider, theme } from '../ui/theme'
 
-import { App } from './app'
+import { Navigation } from './navigation'
 
 export const Main = () => {
   return (
     <RecoilRoot>
       <ThemeProvider theme={theme}>
         <LoadApp>
-          <App />
+          <Navigation />
         </LoadApp>
         <StatusBar hidden />
       </ThemeProvider>

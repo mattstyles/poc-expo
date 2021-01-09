@@ -4,6 +4,14 @@ import { SafeAreaView } from 'react-native'
 import { withTheme } from './theme'
 import { center } from './style'
 
+export const Page = withTheme(SafeAreaView,
+  (theme) => ({
+    display: 'flex',
+    flex: 1,
+    backgroundColor: theme.tokens.bgColor
+  })
+)
+
 export const LayoutCenter = withTheme(SafeAreaView,
   center,
   () => ({
