@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
 import AppLoading from 'expo-app-loading'
 
+// see https://docs.expo.io/guides/preloading-and-caching-assets/
 export const LoadApp = ({
   children
 }) => {

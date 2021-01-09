@@ -8,8 +8,10 @@ import { withTheme } from '../ui/theme'
 import { LayoutCenter } from '../ui/layout'
 import { Text } from '../ui/text'
 
+import { Navigation } from './navigation'
+
 const routeState = atom({
-  key: 'app::route',
+  key: 'dummy::route',
   default: {
     current: 'home'
   }
@@ -60,6 +62,8 @@ export const App = () => {
         <Home match='home' />
         <SomewhereElse match='else' />
       </SimpleComponentRouter>
+      <Box />
+      <Navigation />
     </LayoutCenter>
   )
 }
