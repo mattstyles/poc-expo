@@ -7,14 +7,15 @@ import { theme } from './theme'
 const getColorStyle = ({
   color,
   bright,
-  invert
+  invert,
+  transparent
 }) => {
   const c = theme.colors[color] || theme.colors.text
   const p = c[bright ? 'bright' : 'normal']
-  const s = theme.colors.background
+  const s = theme.tokens.bgColor
 
   return {
-    backgroundColor: invert ? p : s,
+    backgroundColor: transparent ? 'none' : invert ? p : s,
     color: invert ? s : p
   }
 }
@@ -24,6 +25,7 @@ export const Text = ({
   color,
   bold,
   invert,
+  transparent,
   children
 }) => {
   return (
@@ -31,7 +33,8 @@ export const Text = ({
       getColorStyle({
         color,
         bright: bold,
-        invert
+        invert,
+        transparent
       }),
       style
     ]}

@@ -1,4 +1,6 @@
 
+import React, { useContext } from 'react'
+
 const crayola = {
   black: {
     normal: 'hsl(220,6%,20%)',
@@ -36,8 +38,6 @@ const crayola = {
 
 export const theme = {
   colors: {
-    // tokens
-    background: crayola.black.normal,
     // ansi - crayola
     ...crayola,
     // text
@@ -46,5 +46,36 @@ export const theme = {
       bright: 'hsl(230,11%,89%)',
       selection: 'hsl(213,100%,82%)'
     }
+  },
+  tokens: {
+    bgColor: crayola.black.normal
   }
+}
+
+const ThemeContext = React.createContext()
+
+export const ThemeProvider = ({
+  children,
+  theme
+}) => {
+  return (
+    <ThemeContext.Provider value={theme}>
+      {children}
+    </ThemeContext.Provider>
+  )
+}
+
+export const useTheme = () => {
+  const theme = useContext(ThemeContext)
+  return theme
+}
+
+export const withTheme = (Component, ...styleFn) => ({
+  children
+}) => {
+  const theme = useTheme()
+  const style = Object.assign(...styleFn.map(fn => fn(theme)))
+  return (
+    <Component style={style}>{children}</Component>
+  )
 }
