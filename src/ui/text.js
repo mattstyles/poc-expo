@@ -36,7 +36,10 @@ export const Text = ({
         invert,
         transparent
       }),
-      style
+      style,
+      {
+        fontFamily: 'Hasklig-Medium'
+      }
     ]}
     >
       {children}
