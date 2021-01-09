@@ -44,12 +44,7 @@ export const pushRoute = selector({
   key: 'app::route::push',
   set: ({ set, get }, route) => {
     if (typeof route === 'string') {
-      route = {
-        path: route,
-        state: null
-      }
-
-      route._id = hashRoute(route)
+      route = createRoute(route)
     }
 
     if (!route._id) {
