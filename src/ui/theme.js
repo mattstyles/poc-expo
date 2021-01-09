@@ -70,12 +70,10 @@ export const useTheme = () => {
   return theme
 }
 
-export const withTheme = (Component, ...styleFn) => ({
-  children
-}) => {
+export const withTheme = (Component, ...styleFn) => React.forwardRef((props, ref) => {
   const theme = useTheme()
   const style = Object.assign(...styleFn.map(fn => fn(theme)))
   return (
-    <Component style={style}>{children}</Component>
+    <Component ref={ref} {...props} style={style} />
   )
-}
+})

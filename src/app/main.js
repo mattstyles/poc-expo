@@ -13,7 +13,7 @@ const padding = () => ({
 const Box = withTheme(
   View,
   theme => ({
-    backgroundColor: theme.colors.magenta.bright
+    backgroundColor: theme.colors.magenta.normal
   }),
   padding
 )
