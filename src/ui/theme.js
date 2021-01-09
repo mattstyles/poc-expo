@@ -70,9 +70,14 @@ export const useTheme = () => {
   return theme
 }
 
+/**
+ * withTheme accepts any number of styled functions, those functions will be
+ * invoked with the theme and the instance props.
+ * @TODO this would probably benefit from caching at some point
+ */
 export const withTheme = (Component, ...styleFn) => React.forwardRef((props, ref) => {
   const theme = useTheme()
-  const style = Object.assign(...styleFn.map(fn => fn(theme)))
+  const style = Object.assign(...styleFn.map(fn => fn(theme, props)))
   return (
     <Component ref={ref} {...props} style={style} />
   )
