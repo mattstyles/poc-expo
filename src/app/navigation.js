@@ -4,6 +4,8 @@ import { useSetRecoilState, useRecoilValue } from 'recoil'
 import { SimpleComponentRouter as Router } from 'simple-component-router'
 import { View, Button } from 'react-native'
 
+import { EncounterView } from './encounter'
+
 import { routes } from '../core/routes'
 import { createRoute, pushRoute, popRoute, getRoute, routeStack } from '../core/navigation'
 import { Text } from '../ui/text'
@@ -46,6 +48,7 @@ export const Navigation = () => {
     <Router match={route.path}>
       <Home match={routes.home} />
       <SomewhereElse match={routes.some} />
+      <EncounterView match={routes.encounter} />
     </Router>
   )
 }

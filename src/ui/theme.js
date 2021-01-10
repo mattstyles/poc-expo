@@ -77,7 +77,7 @@ export const useTheme = () => {
  */
 export const withTheme = (Component, ...styleFn) => React.forwardRef((props, ref) => {
   const { theme } = useTheme()
-  const style = Object.assign(...styleFn.map(fn => fn(theme, props)))
+  const style = Object.assign(...styleFn.map(fn => fn(theme, props)), props.style)
   return (
     <Component ref={ref} {...props} style={style} />
   )

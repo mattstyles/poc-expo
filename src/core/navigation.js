@@ -24,7 +24,7 @@ const hashRoute = route => {
 }
 
 const navigationStack = [
-  createRoute(routes.home)
+  createRoute(routes.encounter)
 ]
 
 export const routeStack = atom({
